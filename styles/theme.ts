@@ -12,10 +12,16 @@ const theme = {
   purple: "#483EFF",
   red: "#EE374A",
   skyBlue: "#BEE2FD",
+  white: "#FFF",
  },
  sizes: {
   sm: 576,
   md: 992,
+ },
+ borderRadius: {
+  sm: "4px",
+  lg: "10px",
+  xl: "14px",
  },
 };
 
