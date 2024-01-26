@@ -1,5 +1,3 @@
-import Image from "next/image";
-import bgImg from "@/public/images/bg-sidebar-mobile.svg";
 import STEP_DATA from "@/data/stepData";
 
 import { StyledStepSection, ImageWrapper, Steps } from "./StepSection.style";
@@ -28,13 +26,7 @@ const StepSection = ({ currentStep }: IStep) => {
 
  return (
   <StyledStepSection>
-   <ImageWrapper>
-    <Image
-     src={bgImg}
-     alt=""
-     fill
-    />
-   </ImageWrapper>
+   <ImageWrapper></ImageWrapper>
    <Steps>{stepList}</Steps>
   </StyledStepSection>
  );

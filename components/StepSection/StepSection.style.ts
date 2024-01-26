@@ -16,9 +16,9 @@ export const ImageWrapper = styled.div`
  height: 26vh;
  width: 100vw;
  z-index: -1;
- img {
-  object-fit: cover;
- }
+ background-image: url("/images/bg-sidebar-mobile.svg");
+ background-repeat: no-repeat;
+ background-size: cover;
  @media screen and (min-width: ${({ theme }) => theme.sizes.sm}px) {
   position: absolute;
   top: 0;
@@ -26,9 +26,8 @@ export const ImageWrapper = styled.div`
   height: 100%;
   width: 100%;
   z-index: 0;
-  img {
-   border-radius: ${({ theme }) => theme.borderRadius.lg};
-  }
+  background-image: url("/images/bg-sidebar-desktop.svg");
+  border-radius: ${({ theme }) => theme.borderRadius.lg};
  }
 `;
 
