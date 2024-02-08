@@ -11,6 +11,14 @@ const GlobalStyles = createGlobalStyle`
   }
   p{
     margin: 0;
+    line-height: 1.5;
+    color:  ${({ theme }) => theme.colors.grey}
+  }
+  h1{
+    font-size: 1.5rem;
+    @media screen and (min-width: ${({ theme }) => theme.sizes.sm}px) {
+      font-size: 2rem;
+    }
   }
 `;
 
