@@ -33,7 +33,6 @@ const PersonalForm = () => {
  const formData = watch();
 
  const formSubmit = (data: IPersonalInfo) => {
-  console.log(data);
   updateUserData(data);
   handleNextStep();
  };
