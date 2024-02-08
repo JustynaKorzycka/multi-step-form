@@ -40,11 +40,13 @@ export const TextSection = styled.div`
   .step {
    color: ${({ theme }) => theme.colors.lightBlue};
    font-size: 0.75rem;
+   line-height: 1;
   }
   .desc {
    color: ${({ theme }) => theme.colors.white};
    font-size: 0.875rem;
    font-weight: bold;
+   line-height: 1;
   }
  }
 `;

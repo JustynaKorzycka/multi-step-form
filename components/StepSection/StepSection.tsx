@@ -1,14 +1,11 @@
 import STEP_DATA from "@/data/stepData";
-
 import { StyledStepSection, ImageWrapper, Steps } from "./StepSection.style";
 import { useMemo } from "react";
 import StepItem from "./StepItem";
+import { useMultiFormContext } from "@/context/multistepFormContext";
 
-interface IStep {
- currentStep: number;
-}
-
-const StepSection = ({ currentStep }: IStep) => {
+const StepSection = () => {
+ const { currentStep } = useMultiFormContext();
  const stepList = useMemo(() => {
   return STEP_DATA.map((step, index) => {
    let isActive = currentStep + 1 === step.number ? true : false;
