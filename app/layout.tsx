@@ -3,6 +3,7 @@ import { Ubuntu } from "next/font/google";
 import StyledComponentsRegistry from "@/lib/registry";
 import GlobalStyles from "@/styles/GlobalStyles";
 import ThemeClient from "@/lib/ThemeClient";
+import { MultiFormContextProvider } from "@/context/multistepFormContext";
 
 const ubuntu = Ubuntu({ subsets: ["latin"], weight: "400" });
 
@@ -17,13 +18,15 @@ export default function RootLayout({
  children: React.ReactNode;
 }>) {
  return (
-  <html lang="en">
-   <StyledComponentsRegistry>
-    <ThemeClient>
-     <GlobalStyles />
-     <body className={ubuntu.className}>{children}</body>
-    </ThemeClient>
-   </StyledComponentsRegistry>
-  </html>
+  <MultiFormContextProvider>
+   <html lang="en">
+    <StyledComponentsRegistry>
+     <ThemeClient>
+      <GlobalStyles />
+      <body className={ubuntu.className}>{children}</body>
+     </ThemeClient>
+    </StyledComponentsRegistry>
+   </html>
+  </MultiFormContextProvider>
  );
 }
