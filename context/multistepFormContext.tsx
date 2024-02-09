@@ -10,9 +10,9 @@ export interface IPersonalInfo {
 }
 
 export interface User extends IPersonalInfo {
- plan: PlansEnum;
- monthly: boolean;
  addOns: string;
+ plan: PlansEnum;
+ yearly: boolean;
 }
 
 export const initialUserData: User = {
@@ -20,7 +20,7 @@ export const initialUserData: User = {
  email: "",
  phone: "",
  plan: PlansEnum.arcade,
- monthly: true,
+ yearly: false,
  addOns: "",
 };
 
@@ -48,7 +48,7 @@ interface MultiFormProps {
 
 export const MultiFormContextProvider = ({ children }: MultiFormProps) => {
  const [user, setUser] = useState<User>(initialUserData);
- const [currentStep, setCurrentStep] = useState<number>(0);
+ const [currentStep, setCurrentStep] = useState<number>(1);
 
  const updateUserData = (values: Partial<User>) => {
   setUser({ ...user, ...values });
