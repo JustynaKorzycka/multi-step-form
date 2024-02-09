@@ -1,4 +1,4 @@
-import { Path, useForm, UseFormRegister, SubmitHandler } from "react-hook-form";
+import { UseFormRegister } from "react-hook-form";
 import { IPersonalInfo } from "@/context/multistepFormContext";
 import { NameEnum } from "@/data/personalInfoData";
 import ErrorText from "./ErrorText";
@@ -14,10 +14,11 @@ interface IInputProps {
 const Input = ({ name, label, register, placeholder, error }: IInputProps) => {
  return (
   <InputGroup $error={error ? true : false}>
-   <label>{label}</label>
+   <label htmlFor={name}>{label}</label>
    <input
     placeholder={placeholder}
     {...register(name, { required: true })}
+    name={name}
    />
    <ErrorText text={error} />
   </InputGroup>

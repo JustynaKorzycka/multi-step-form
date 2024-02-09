@@ -12,7 +12,7 @@ import Input from "../ui/Input";
 import ButtonsSection from "../ButtonsSection/ButtonsSection";
 import PERSONAL_INFO_DATA from "@/data/personalInfoData";
 
-import { Form } from "@/components/Form/Form.style";
+import { Form, FormContent } from "@/components/Form/Form.style";
 
 const PersonalForm = () => {
  const { handleNextStep, updateUserData, user } = useMultiFormContext();
@@ -39,22 +39,24 @@ const PersonalForm = () => {
 
  return (
   <Form onSubmit={handleSubmit(formSubmit)}>
-   <h1>{PERSONAL_INFO_DATA.title}</h1>
-   <p className="topPar"> {PERSONAL_INFO_DATA.desc}</p>
-   {PERSONAL_INFO_DATA.inputs.map((input, index) => {
-    const name = input.name;
-    const currentError = errors[`${name}`]?.message;
-    return (
-     <Input
-      key={index}
-      label={input.label}
-      placeholder={input.placeholder}
-      register={register}
-      name={input.name}
-      error={currentError}
-     />
-    );
-   })}
+   <FormContent>
+    <h1>{PERSONAL_INFO_DATA.title}</h1>
+    <p className="topPar"> {PERSONAL_INFO_DATA.desc}</p>
+    {PERSONAL_INFO_DATA.inputs.map((input, index) => {
+     const name = input.name;
+     const currentError = errors[`${name}`]?.message;
+     return (
+      <Input
+       key={index}
+       label={input.label}
+       placeholder={input.placeholder}
+       register={register}
+       name={input.name}
+       error={currentError}
+      />
+     );
+    })}
+   </FormContent>
    <ButtonsSection />
   </Form>
  );

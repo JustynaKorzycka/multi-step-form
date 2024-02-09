@@ -10,13 +10,21 @@ export const FormWrapper = styled.div`
  width: 100%;
 
  @media screen and (min-width: ${({ theme }) => theme.sizes.sm}px) {
-  max-width: 450px;
+  max-width: 470px;
   margin-left: auto;
   margin-right: auto;
  }
 `;
 
 export const Form = styled.form`
+ height: 100%;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ flex-grow: 1;
+`;
+
+export const FormContent = styled.div`
  background-color: ${({ theme }) => theme.colors.white};
  border-radius: ${({ theme }) => theme.borderRadius.lg};
  padding: 2rem 1.5rem;

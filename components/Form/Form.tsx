@@ -17,11 +17,7 @@ const Form = () => {
   else return <SummaryForm />;
  }, [currentStep]);
 
- return (
-  <FormWrapper>
-   <FormWrapper>{activeForm}</FormWrapper>
-  </FormWrapper>
- );
+ return <FormWrapper>{activeForm}</FormWrapper>;
 };
 
 export default Form;

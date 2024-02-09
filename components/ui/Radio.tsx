@@ -93,6 +93,10 @@ const LabelContent = styled.div<ILabelProps>`
  &:hover {
   border-color: ${({ theme }) => theme.colors.purple};
  }
+ @media screen and (min-width: ${({ theme }) => theme.sizes.md}px) {
+  flex-direction: column;
+  gap: 39px;
+ }
 `;
 
 const Description = styled.div`
