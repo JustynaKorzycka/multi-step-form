@@ -21,7 +21,7 @@ const PlanForm = () => {
  const { register, handleSubmit, formState, watch } = useForm<IPlan>({
   defaultValues: {
    plan: user.plan,
-   yearly: false,
+   yearly: user.yearly,
   },
  });
  const watchPlan = watch("plan");
