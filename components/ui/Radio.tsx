@@ -45,7 +45,7 @@ const Radio = ({
      <Description>
       <span className="title">{name}</span>
       <span className="price">
-       {yearlyValue ? `$${yearly}/yr` : `$${monthly}/yr`}
+       {yearlyValue ? `$${yearly}/yr` : `$${monthly}/mo`}
       </span>
       {yearlyValue && <span className="prom">{prom}</span>}
      </Description>
