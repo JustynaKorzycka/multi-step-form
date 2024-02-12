@@ -6,9 +6,10 @@ import SummaryForm from "./SummaryForm";
 import { FormWrapper } from "./Form.style";
 import { useMemo } from "react";
 import { useMultiFormContext } from "@/context/multistepFormContext";
+import Submitted from "../Submitted";
 
 const Form = () => {
- const { currentStep } = useMultiFormContext();
+ const { currentStep, submitted } = useMultiFormContext();
 
  const activeForm = useMemo(() => {
   if (currentStep === 0) return <PersonalForm />;
@@ -17,7 +18,7 @@ const Form = () => {
   else return <SummaryForm />;
  }, [currentStep]);
 
- return <FormWrapper>{activeForm}</FormWrapper>;
+ return <FormWrapper>{submitted ? <Submitted /> : activeForm}</FormWrapper>;
 };
 
 export default Form;
