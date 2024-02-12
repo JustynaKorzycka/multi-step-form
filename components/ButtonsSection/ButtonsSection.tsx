@@ -3,10 +3,18 @@ import Button from "../ui/Button/Button";
 import { StyledButtonsSection } from "./ButtonsSection.style";
 
 const ButtonsSection = () => {
- const { currentStep, stepsNumber, handlePrevStep } = useMultiFormContext();
+ const { currentStep, stepsNumber, handlePrevStep, handleSubmit } =
+  useMultiFormContext();
  return (
   <StyledButtonsSection>
-   <Button kind={currentStep === stepsNumber - 1 ? "confirm" : "next"} />
+   {currentStep === stepsNumber - 1 ? (
+    <Button
+     kind="confirm"
+     onClick={handleSubmit}
+    />
+   ) : (
+    <Button kind="next" />
+   )}
    {currentStep > 0 && (
     <Button
      kind="prev"

@@ -2,6 +2,8 @@
 import STEP_DATA from "@/data/stepData";
 import { useContext, useState, createContext, ReactNode } from "react";
 import { PlansEnum } from "@/data/planData";
+import { AddonsEnum } from "@/data/addOnsData";
+import { boolean } from "yup";
 
 export interface IPersonalInfo {
  userName: string;
@@ -10,7 +12,7 @@ export interface IPersonalInfo {
 }
 
 export interface User extends IPersonalInfo {
- addOns: string;
+ addons: AddonsEnum[];
  plan: PlansEnum;
  yearly: boolean;
 }
@@ -21,7 +23,7 @@ export const initialUserData: User = {
  phone: "",
  plan: PlansEnum.arcade,
  yearly: false,
- addOns: "",
+ addons: [],
 };
 
 export interface UserContextType {
@@ -29,8 +31,11 @@ export interface UserContextType {
  updateUserData: (property: Partial<User>) => void;
  currentStep: number;
  stepsNumber: number;
+ submitted: boolean;
  handlePrevStep: () => void;
  handleNextStep: () => void;
+ handleChangeToPlan: () => void;
+ handleSubmit: () => void;
 }
 
 export const MultiFormContext = createContext<UserContextType>({
@@ -38,8 +43,11 @@ export const MultiFormContext = createContext<UserContextType>({
  updateUserData: () => {},
  currentStep: 0,
  stepsNumber: 0,
+ submitted: false,
  handlePrevStep: () => {},
  handleNextStep: () => {},
+ handleChangeToPlan: () => {},
+ handleSubmit: () => {},
 });
 
 interface MultiFormProps {
@@ -48,7 +56,8 @@ interface MultiFormProps {
 
 export const MultiFormContextProvider = ({ children }: MultiFormProps) => {
  const [user, setUser] = useState<User>(initialUserData);
- const [currentStep, setCurrentStep] = useState<number>(1);
+ const [currentStep, setCurrentStep] = useState<number>(0);
+ const [submitted, setSubmitted] = useState<boolean>(false);
 
  const updateUserData = (values: Partial<User>) => {
   setUser({ ...user, ...values });
@@ -65,6 +74,14 @@ export const MultiFormContextProvider = ({ children }: MultiFormProps) => {
    setCurrentStep((prev) => prev + 1);
   }
  };
+
+ const handleChangeToPlan = () => {
+  setCurrentStep(1);
+ };
+
+ const handleSubmit = () => {
+  setSubmitted(true);
+ };
  return (
   <MultiFormContext.Provider
    value={{
@@ -72,8 +89,11 @@ export const MultiFormContextProvider = ({ children }: MultiFormProps) => {
     updateUserData,
     currentStep,
     stepsNumber,
+    submitted,
     handlePrevStep,
     handleNextStep,
+    handleChangeToPlan,
+    handleSubmit,
    }}
   >
    {children}
