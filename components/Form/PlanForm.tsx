@@ -28,7 +28,6 @@ const PlanForm = () => {
  const watchYearly = watch("yearly");
 
  const formSubmit = (data: IPlan) => {
-  console.log(data);
   updateUserData(data);
   handleNextStep();
  };
